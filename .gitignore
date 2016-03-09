@@ -1,3 +1,7 @@
 *.d51
 *.s51
 *.lst
+*.cout
+*.pbd
+*.browse
+*.pbi
