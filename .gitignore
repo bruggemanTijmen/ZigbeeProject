@@ -7,3 +7,9 @@
 *.pbi
 *.r51
 *.map
+*.dep
+*.bat
+*.xcl
+*.dbgdt
+*.dni
+*.wsdt
