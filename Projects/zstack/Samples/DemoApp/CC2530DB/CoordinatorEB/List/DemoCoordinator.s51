@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V9.20.1.2476 for 8051               09/Mar/2016  12:31:37
+// IAR C/C++ Compiler V9.20.1.2476 for 8051               09/Mar/2016  12:48:00
 // Copyright 2004-2015 IAR Systems AB.
 // Standalone license - IAR Embedded Workbench for 8051
 //
@@ -12,14 +12,14 @@
 //    Dptr setup         =  1,16
 //                          
 //    Source file        =  
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\Source\DemoCoordinator.c
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\Source\DemoCoordinator.c
 //    Command line       =  
 //        -f
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wCoord.cfg
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wCoord.cfg
 //        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRUE
 //        -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8 -DMAC_CFG_RX_MAX=5
 //        -DZDO_COORDINATOR -DRTR_NWK) -f
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
 //        (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
 //        -DDEFAULT_CHANLIST=0x00200000 -DZDAPP_CONFIG_PAN_ID=0x0EAE
 //        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
@@ -35,61 +35,61 @@
 //        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
 //        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100)
 //        -DREJOIN_POLL_RATE=440
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\Source\DemoCoordinator.c
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\Source\DemoCoordinator.c
 //        -D HOLD_AUTO_START -D BUILD_ALL_DEVICES -D REFLECTOR -D NV_INIT -D
 //        xNV_RESTORE -D ZTOOL_P1 -lC
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\CoordinatorEB\List\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\CoordinatorEB\List\
 //        -lA
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\CoordinatorEB\List\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\CoordinatorEB\List\
 //        --diag_suppress Pe001,Pa010,Pe1665 -o
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\CoordinatorEB\Obj\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\CoordinatorEB\Obj\
 //        -e --debug --core=plain --dptr=16,1 --data_model=large
 //        --code_model=banked --calling_convention=xdata_reentrant
 //        --place_constants=data_rom --nr_virtual_regs 16 -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\Source\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\Source\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\ZMain\TI2530DB\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\ZMain\TI2530DB\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\hal\include\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\hal\include\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\mac\include\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\mac\include\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\mt\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\mt\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\osal\include\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\osal\include\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\stack\af\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\stack\af\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\zmac\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\zmac\
 //        -I
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
 //        -Oh --require_prototypes
 //    List file          =  
-//        C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\CoordinatorEB\List\DemoCoordinator.s51
+//        C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\CoordinatorEB\List\DemoCoordinator.s51
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -467,7 +467,7 @@ zb_StartConfirm     SYMBOL "zb_StartConfirm"
         ARGFRAME IOVERLAY, 0, STATIC
         ARGFRAME DOVERLAY, 0, STATIC
 
-// C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\Source\DemoCoordinator.c
+// C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\Source\DemoCoordinator.c
 //    1 /**************************************************************************************************
 //    2   Filename:       DemoCoordinator.c
 //    3 
@@ -793,10 +793,13 @@ zb_HandleOsalEvent:
         LCALL   `??initUart::?relay` ; Banked call to: initUart
 //  186     MCU_IO_DIR_OUTPUT(0, 4);
         ORL     0xfd,#0x10
-//  187      MCU_IO_DIR_OUTPUT(0, 1);
-        ORL     0xfd,#0x2
-//  188     // blind LED 1 to indicate starting/joining a network
-//  189     HalLedBlink ( HAL_LED_1, 0, 50, 500 );
+//  187     MCU_IO_DIR_OUTPUT(0, 7);
+        ORL     0xfd,#0x80
+//  188     MCU_IO_DIR_INPUT(0, 2);
+        ANL     0xfd,#0xfb
+//  189     
+//  190     // blind LED 1 to indicate starting/joining a network
+//  191     HalLedBlink ( HAL_LED_1, 0, 50, 500 );
         ; Setup parameters for call to function HalLedBlink
         MOV     R4,#-0xc
         MOV     R5,#0x1
@@ -804,29 +807,29 @@ zb_HandleOsalEvent:
         MOV     R2,#0x0
         MOV     R1,#0x1
         LCALL   `??HalLedBlink::?relay`; Banked call to: HalLedBlink
-//  190     HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF );
+//  192     HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF );
         ; Setup parameters for call to function HalLedSet
         MOV     R2,#0x0
         MOV     R1,#0x2
         LCALL   `??HalLedSet::?relay`; Banked call to: HalLedSet
-//  191 
-//  192     // Start the device
-//  193     zb_StartRequest();
+//  193 
+//  194     // Start the device
+//  195     zb_StartRequest();
         ; Setup parameters for call to function zb_StartRequest
         LCALL   `??zb_StartRequest::?relay`; Banked call to: zb_StartRequest
-//  194   }
-//  195 
-//  196   if ( event & MY_START_EVT )
+//  196   }
+//  197 
+//  198   if ( event & MY_START_EVT )
 ??zb_HandleOsalEvent_0:
         MOV     A,R6
         MOV     C,0xE0 /* A   */.0
         JNC     ??zb_HandleOsalEvent_1
-//  197   {
-//  198     zb_StartRequest();
+//  199   {
+//  200     zb_StartRequest();
         ; Setup parameters for call to function zb_StartRequest
         LCALL   `??zb_StartRequest::?relay`; Banked call to: zb_StartRequest
-//  199   }
-//  200 }
+//  201   }
+//  202 }
 ??zb_HandleOsalEvent_1:
           CFI EndBlock cfiBlock0
         REQUIRE ?Subroutine0
@@ -862,29 +865,29 @@ zb_HandleOsalEvent:
           CFI ?RET_HIGH Frame(CFA_SP, 2)
           CFI ?RET_LOW Frame(CFA_SP, 1)
           CFI EndBlock cfiBlock1
-//  201 
-//  202 /******************************************************************************
-//  203  * @fn      zb_HandleKeys
-//  204  *
-//  205  * @brief   Handles all key events for this device.
+//  203 
+//  204 /******************************************************************************
+//  205  * @fn      zb_HandleKeys
 //  206  *
-//  207  * @param   shift - true if in shift/alt.
-//  208  * @param   keys - bit field for key events. Valid entries:
-//  209  *                 EVAL_SW4
-//  210  *                 EVAL_SW3
-//  211  *                 EVAL_SW2
-//  212  *                 EVAL_SW1
-//  213  *
-//  214  * @return  none
-//  215  */
+//  207  * @brief   Handles all key events for this device.
+//  208  *
+//  209  * @param   shift - true if in shift/alt.
+//  210  * @param   keys - bit field for key events. Valid entries:
+//  211  *                 EVAL_SW4
+//  212  *                 EVAL_SW3
+//  213  *                 EVAL_SW2
+//  214  *                 EVAL_SW1
+//  215  *
+//  216  * @return  none
+//  217  */
 
         RSEG BANKED_CODE:CODE:NOROOT(0)
-//  216 void zb_HandleKeys( uint8 shift, uint8 keys )
+//  218 void zb_HandleKeys( uint8 shift, uint8 keys )
 zb_HandleKeys:
           CFI Block cfiBlock2 Using cfiCommon0
           CFI Function zb_HandleKeys
         CODE
-//  217 {
+//  219 {
         FUNCALL zb_HandleKeys, zb_AllowBind
         LOCFRAME ISTACK, 0, STACK
         LOCFRAME PSTACK, 0, STACK
@@ -962,95 +965,101 @@ zb_HandleKeys:
         MOV     R6,A
         MOV     A,R2
         MOV     R7,A
-//  218 
-//  219   static uint8 allowBind = FALSE;
 //  220 
-//  221   // Shift is used to make each button/switch dual purpose.
-//  222   if ( shift )
+//  221   static uint8 allowBind = FALSE;
+//  222 
+//  223   // Shift is used to make each button/switch dual purpose.
+//  224   if ( shift )
         MOV     A,R6
         JNZ     ??zb_HandleKeys_0
-//  223   {
-//  224   }
-//  225   else
-//  226   {
-//  227     if ( keys & HAL_KEY_SW_1 )
+//  225   {
+//  226   }
+//  227   else
+//  228   {
+//  229     if ( keys & HAL_KEY_SW_1 )
         MOV     A,R7
         MOV     C,0xE0 /* A   */.0
         JNC     ??zb_HandleKeys_1
-//  228     {
-//  229       MCU_IO_SET_HIGH(0, 4);
+//  230     {
+//  231       MCU_IO_SET_HIGH(0, 4);
         SETB    0x80.4
-//  230       if ( appState == APP_START )
+//  232       if ( appState == APP_START )
         MOV     DPTR,#appState
         MOVX    A,@DPTR
         XRL     A,#0x2
         JNZ     ??zb_HandleKeys_1
-//  231       {
-//  232         allowBind ^= 1;
+//  233       {
+//  234         allowBind ^= 1;
         MOV     DPTR,#??allowBind
         MOVX    A,@DPTR
         XRL     A,#0x1
         MOVX    @DPTR,A
-//  233         if ( allowBind )
+//  235         if ( allowBind )
         JZ      ??zb_HandleKeys_2
-//  234         {
-//  235           // Turn ON Allow Bind mode infinitly
-//  236           zb_AllowBind( 0xFF );
+//  236         {
+//  237           // Turn ON Allow Bind mode infinitly
+//  238           zb_AllowBind( 0xFF );
         ; Setup parameters for call to function zb_AllowBind
         MOV     R1,#-0x1
         LCALL   `??zb_AllowBind::?relay`; Banked call to: zb_AllowBind
-//  237           HalLedSet( HAL_LED_2, HAL_LED_MODE_ON );
+//  239           HalLedSet( HAL_LED_2, HAL_LED_MODE_ON );
         ; Setup parameters for call to function HalLedSet
         MOV     R2,#0x1
         SJMP    ??zb_HandleKeys_3
-//  238         }
-//  239         else
-//  240         {
-//  241           // Turn OFF Allow Bind mode infinitly
-//  242           zb_AllowBind( 0x00 );
+//  240         }
+//  241         else
+//  242         {
+//  243           // Turn OFF Allow Bind mode infinitly
+//  244           zb_AllowBind( 0x00 );
 ??zb_HandleKeys_2:
         ; Setup parameters for call to function zb_AllowBind
         MOV     R1,#0x0
         LCALL   `??zb_AllowBind::?relay`; Banked call to: zb_AllowBind
-//  243           HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF );
+//  245           HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF );
         ; Setup parameters for call to function HalLedSet
         MOV     R2,#0x0
 ??zb_HandleKeys_3:
         MOV     R1,#0x2
         LCALL   `??HalLedSet::?relay`; Banked call to: HalLedSet
-//  244         }
-//  245       }
-//  246     } 
-//  247     if ( keys & HAL_KEY_SW_2 )
+//  246         }
+//  247       }
+//  248     } 
+//  249     if ( keys & HAL_KEY_SW_2 )
 ??zb_HandleKeys_1:
         MOV     A,R7
         MOV     C,0xE0 /* A   */.1
         JC      ??zb_HandleKeys_4
-//  248     {
-//  249       while(1){
-//  250         if(HalAdcRead(HAL_ADC_CHANNEL_0, HAL_ADC_RESOLUTION_12)>1500){
-//  251         MCU_IO_SET_LOW(0, 4);
-//  252         MCU_IO_SET_LOW(0, 1);
-//  253       }
-//  254       else{
-//  255         MCU_IO_SET_HIGH(0, 4);
-//  256         MCU_IO_SET_HIGH(0, 1);
-//  257       }
-//  258       }
-//  259     }
-//  260     if ( keys & HAL_KEY_SW_3 )
-//  261     {
-//  262     }
-//  263     if ( keys & HAL_KEY_SW_4 )
-//  264     {
-//  265     }
-//  266   }
-//  267 }
+//  250     {
+//  251       while(1){
+//  252         if(HalAdcRead(HAL_ADC_CHANNEL_0, HAL_ADC_RESOLUTION_12)>1500){
+//  253        // MCU_IO_SET_LOW(0, 4);
+//  254           MCU_IO_SET_LOW(0, 7);
+//  255         }
+//  256         else{
+//  257        //   MCU_IO_SET_HIGH(0, 4);
+//  258           MCU_IO_SET_HIGH(0, 7);
+//  259         }
+//  260         if(MCU_IO_GET(0, 2)){
+//  261            MCU_IO_SET_HIGH(0, 4);
+//  262         
+//  263         }
+//  264         else{
+//  265           MCU_IO_SET_LOW(0, 4);
+//  266         }
+//  267       }
+//  268     }
+//  269     if ( keys & HAL_KEY_SW_3 )
+//  270     {
+//  271     }
+//  272     if ( keys & HAL_KEY_SW_4 )
+//  273     {
+//  274     }
+//  275   }
+//  276 }
 ??zb_HandleKeys_0:
         LJMP    ?Subroutine1 & 0xFFFF
 ??zb_HandleKeys_5:
-        CLR     0x80.4
-        CLR     0x80.1
+        SETB    0x80.4
 ??zb_HandleKeys_4:
         ; Setup parameters for call to function HalAdcRead
         MOV     R2,#0x3
@@ -1061,9 +1070,15 @@ zb_HandleKeys:
         SUBB    A,#-0x23
         MOV     A,R3
         SUBB    A,#0x5
-        JNC     ??zb_HandleKeys_5
-        SETB    0x80.4
-        SETB    0x80.1
+        JC      ??zb_HandleKeys_6
+        CLR     0x80.7
+        SJMP    ??zb_HandleKeys_7
+??zb_HandleKeys_6:
+        SETB    0x80.7
+??zb_HandleKeys_7:
+        MOV     C,0x80.2
+        JC      ??zb_HandleKeys_5
+        CLR     0x80.4
         SJMP    ??zb_HandleKeys_4
           CFI EndBlock cfiBlock2
         REQUIRE _A_P0
@@ -1073,27 +1088,27 @@ zb_HandleKeys:
 ??allowBind:
         DS 1
         REQUIRE __INIT_XDATA_Z
-//  268 
-//  269 /******************************************************************************
-//  270  * @fn          zb_StartConfirm
-//  271  *
-//  272  * @brief       The zb_StartConfirm callback is called by the ZigBee stack
-//  273  *              after a start request operation completes
-//  274  *
-//  275  * @param       status - The status of the start operation.  Status of
-//  276  *                       ZB_SUCCESS indicates the start operation completed
-//  277  *                       successfully.  Else the status is an error code.
-//  278  *
-//  279  * @return      none
-//  280  */
+//  277 
+//  278 /******************************************************************************
+//  279  * @fn          zb_StartConfirm
+//  280  *
+//  281  * @brief       The zb_StartConfirm callback is called by the ZigBee stack
+//  282  *              after a start request operation completes
+//  283  *
+//  284  * @param       status - The status of the start operation.  Status of
+//  285  *                       ZB_SUCCESS indicates the start operation completed
+//  286  *                       successfully.  Else the status is an error code.
+//  287  *
+//  288  * @return      none
+//  289  */
 
         RSEG BANKED_CODE:CODE:NOROOT(0)
-//  281 void zb_StartConfirm( uint8 status )
+//  290 void zb_StartConfirm( uint8 status )
 zb_StartConfirm:
           CFI Block cfiBlock3 Using cfiCommon0
           CFI Function zb_StartConfirm
         CODE
-//  282 {
+//  291 {
         FUNCALL zb_StartConfirm, HalLedSet
         LOCFRAME ISTACK, 0, STACK
         LOCFRAME PSTACK, 0, STACK
@@ -1139,28 +1154,28 @@ zb_StartConfirm:
         ; Saved register size: 12
         ; Auto size: 0
         MOV     A,R1
-//  283   // If the device sucessfully started, change state to running
-//  284   if ( status == ZB_SUCCESS )
+//  292   // If the device sucessfully started, change state to running
+//  293   if ( status == ZB_SUCCESS )
         JNZ     ??zb_StartConfirm_0
-//  285   {
-//  286     // Set LED 1 to indicate that node is operational on the network
-//  287     HalLedSet( HAL_LED_1, HAL_LED_MODE_ON );
+//  294   {
+//  295     // Set LED 1 to indicate that node is operational on the network
+//  296     HalLedSet( HAL_LED_1, HAL_LED_MODE_ON );
         ; Setup parameters for call to function HalLedSet
         MOV     R2,#0x1
         MOV     R1,#0x1
         LCALL   `??HalLedSet::?relay`; Banked call to: HalLedSet
-//  288 
-//  289     // Change application state
-//  290     appState = APP_START;
+//  297 
+//  298     // Change application state
+//  299     appState = APP_START;
         MOV     DPTR,#appState
         MOV     A,#0x2
         MOVX    @DPTR,A
         SJMP    ??zb_StartConfirm_1
-//  291   }
-//  292   else
-//  293   {
-//  294     // Try again later with a delay
-//  295     osal_start_timerEx( sapi_TaskID, MY_START_EVT, myStartRetryDelay );
+//  300   }
+//  301   else
+//  302   {
+//  303     // Try again later with a delay
+//  304     osal_start_timerEx( sapi_TaskID, MY_START_EVT, myStartRetryDelay );
 ??zb_StartConfirm_0:
         ; Setup parameters for call to function osal_start_timerEx
         MOV     DPTR,#myStartRetryDelay
@@ -1182,8 +1197,8 @@ zb_StartConfirm:
         MOV     A,#0x4
         LCALL   ?DEALLOC_XSTACK8
           CFI CFA_XSP16 add(XSP16, 12)
-//  296   }
-//  297 }
+//  305   }
+//  306 }
 ??zb_StartConfirm_1:
         MOV     R7,#0x4
         LJMP    ?BANKED_LEAVE_XDATA
@@ -1202,136 +1217,136 @@ zb_StartConfirm:
           CFI CFA_SP SP+-3
           CFI CFA_XSP16 XSP16+0
           CFI EndBlock cfiBlock3
-//  298 
-//  299 /******************************************************************************
-//  300  * @fn          zb_SendDataConfirm
-//  301  *
-//  302  * @brief       The zb_SendDataConfirm callback function is called by the
-//  303  *              ZigBee stack after a send data operation completes
-//  304  *
-//  305  * @param       handle - The handle identifying the data transmission.
-//  306  *              status - The status of the operation.
-//  307  *
-//  308  * @return      none
-//  309  */
+//  307 
+//  308 /******************************************************************************
+//  309  * @fn          zb_SendDataConfirm
+//  310  *
+//  311  * @brief       The zb_SendDataConfirm callback function is called by the
+//  312  *              ZigBee stack after a send data operation completes
+//  313  *
+//  314  * @param       handle - The handle identifying the data transmission.
+//  315  *              status - The status of the operation.
+//  316  *
+//  317  * @return      none
+//  318  */
 
         RSEG BANKED_CODE:CODE:NOROOT(0)
-//  310 void zb_SendDataConfirm( uint8 handle, uint8 status )
+//  319 void zb_SendDataConfirm( uint8 handle, uint8 status )
 zb_SendDataConfirm:
           CFI Block cfiBlock4 Using cfiCommon0
           CFI Function zb_SendDataConfirm
         CODE
-//  311 {
+//  320 {
         ; Saved register size: 0
         ; Auto size: 0
-//  312   (void)handle;
-//  313   (void)status;
-//  314 }
+//  321   (void)handle;
+//  322   (void)status;
+//  323 }
         LJMP    ?BRET
           CFI EndBlock cfiBlock4
-//  315 
-//  316 /******************************************************************************
-//  317  * @fn          zb_BindConfirm
-//  318  *
-//  319  * @brief       The zb_BindConfirm callback is called by the ZigBee stack
-//  320  *              after a bind operation completes.
-//  321  *
-//  322  * @param       commandId - The command ID of the binding being confirmed.
-//  323  *              status - The status of the bind operation.
-//  324  *
-//  325  * @return      none
-//  326  */
+//  324 
+//  325 /******************************************************************************
+//  326  * @fn          zb_BindConfirm
+//  327  *
+//  328  * @brief       The zb_BindConfirm callback is called by the ZigBee stack
+//  329  *              after a bind operation completes.
+//  330  *
+//  331  * @param       commandId - The command ID of the binding being confirmed.
+//  332  *              status - The status of the bind operation.
+//  333  *
+//  334  * @return      none
+//  335  */
 
         RSEG BANKED_CODE:CODE:NOROOT(0)
-//  327 void zb_BindConfirm( uint16 commandId, uint8 status )
+//  336 void zb_BindConfirm( uint16 commandId, uint8 status )
 zb_BindConfirm:
           CFI Block cfiBlock5 Using cfiCommon0
           CFI Function zb_BindConfirm
         CODE
-//  328 {
+//  337 {
         ; Saved register size: 0
         ; Auto size: 0
-//  329   (void)commandId;
-//  330   (void)status;
-//  331 }
+//  338   (void)commandId;
+//  339   (void)status;
+//  340 }
         LJMP    ?BRET
           CFI EndBlock cfiBlock5
-//  332 
-//  333 /******************************************************************************
-//  334  * @fn          zb_AllowBindConfirm
-//  335  *
-//  336  * @brief       Indicates when another device attempted to bind to this device
-//  337  *
-//  338  * @param
-//  339  *
-//  340  * @return      none
-//  341  */
+//  341 
+//  342 /******************************************************************************
+//  343  * @fn          zb_AllowBindConfirm
+//  344  *
+//  345  * @brief       Indicates when another device attempted to bind to this device
+//  346  *
+//  347  * @param
+//  348  *
+//  349  * @return      none
+//  350  */
 
         RSEG BANKED_CODE:CODE:NOROOT(0)
-//  342 void zb_AllowBindConfirm( uint16 source )
+//  351 void zb_AllowBindConfirm( uint16 source )
 zb_AllowBindConfirm:
           CFI Block cfiBlock6 Using cfiCommon0
           CFI Function zb_AllowBindConfirm
         CODE
-//  343 {
+//  352 {
         ; Saved register size: 0
         ; Auto size: 0
-//  344   (void)source;
-//  345 }
+//  353   (void)source;
+//  354 }
         LJMP    ?BRET
           CFI EndBlock cfiBlock6
-//  346 
-//  347 /******************************************************************************
-//  348  * @fn          zb_FindDeviceConfirm
-//  349  *
-//  350  * @brief       The zb_FindDeviceConfirm callback function is called by the
-//  351  *              ZigBee stack when a find device operation completes.
-//  352  *
-//  353  * @param       searchType - The type of search that was performed.
-//  354  *              searchKey - Value that the search was executed on.
-//  355  *              result - The result of the search.
-//  356  *
-//  357  * @return      none
-//  358  */
+//  355 
+//  356 /******************************************************************************
+//  357  * @fn          zb_FindDeviceConfirm
+//  358  *
+//  359  * @brief       The zb_FindDeviceConfirm callback function is called by the
+//  360  *              ZigBee stack when a find device operation completes.
+//  361  *
+//  362  * @param       searchType - The type of search that was performed.
+//  363  *              searchKey - Value that the search was executed on.
+//  364  *              result - The result of the search.
+//  365  *
+//  366  * @return      none
+//  367  */
 
         RSEG BANKED_CODE:CODE:NOROOT(0)
-//  359 void zb_FindDeviceConfirm( uint8 searchType, uint8 *searchKey, uint8 *result )
+//  368 void zb_FindDeviceConfirm( uint8 searchType, uint8 *searchKey, uint8 *result )
 zb_FindDeviceConfirm:
           CFI Block cfiBlock7 Using cfiCommon0
           CFI Function zb_FindDeviceConfirm
         CODE
-//  360 {
+//  369 {
         ; Saved register size: 0
         ; Auto size: 0
-//  361   (void)searchType;
-//  362   (void)searchKey;
-//  363   (void)result;
-//  364 }
+//  370   (void)searchType;
+//  371   (void)searchKey;
+//  372   (void)result;
+//  373 }
         LJMP    ?BRET
           CFI EndBlock cfiBlock7
-//  365 
-//  366 /******************************************************************************
-//  367  * @fn          zb_ReceiveDataIndication
-//  368  *
-//  369  * @brief       The zb_ReceiveDataIndication callback function is called
-//  370  *              asynchronously by the ZigBee stack to notify the application
-//  371  *              when data is received from a peer device.
-//  372  *
-//  373  * @param       source - The short address of the peer device that sent the data
-//  374  *              command - The commandId associated with the data
-//  375  *              len - The number of bytes in the pData parameter
-//  376  *              pData - The data sent by the peer device
+//  374 
+//  375 /******************************************************************************
+//  376  * @fn          zb_ReceiveDataIndication
 //  377  *
-//  378  * @return      none
-//  379  */
+//  378  * @brief       The zb_ReceiveDataIndication callback function is called
+//  379  *              asynchronously by the ZigBee stack to notify the application
+//  380  *              when data is received from a peer device.
+//  381  *
+//  382  * @param       source - The short address of the peer device that sent the data
+//  383  *              command - The commandId associated with the data
+//  384  *              len - The number of bytes in the pData parameter
+//  385  *              pData - The data sent by the peer device
+//  386  *
+//  387  * @return      none
+//  388  */
 
         RSEG BANKED_CODE:CODE:NOROOT(0)
-//  380 void zb_ReceiveDataIndication( uint16 source, uint16 command, uint16 len, uint8 *pData  )
+//  389 void zb_ReceiveDataIndication( uint16 source, uint16 command, uint16 len, uint8 *pData  )
 zb_ReceiveDataIndication:
           CFI Block cfiBlock8 Using cfiCommon0
           CFI Function zb_ReceiveDataIndication
         CODE
-//  381 {
+//  390 {
         FUNCALL zb_ReceiveDataIndication, HalLedSet
         LOCFRAME ISTACK, 0, STACK
         LOCFRAME PSTACK, 0, STACK
@@ -1376,10 +1391,10 @@ zb_ReceiveDataIndication:
         INC     DPTR
         MOVX    A,@DPTR
         MOV     R1,A
-//  382   (void)command;
-//  383   (void)len;
-//  384 
-//  385   gtwData.parent = BUILD_UINT16(pData[SENSOR_PARENT_OFFSET+ 1], pData[SENSOR_PARENT_OFFSET]);
+//  391   (void)command;
+//  392   (void)len;
+//  393 
+//  394   gtwData.parent = BUILD_UINT16(pData[SENSOR_PARENT_OFFSET+ 1], pData[SENSOR_PARENT_OFFSET]);
         MOV     DPL,R0
         MOV     DPH,R1
         INC     DPTR
@@ -1399,62 +1414,62 @@ zb_ReceiveDataIndication:
         INC     DPTR
         MOV     A,R5
         MOVX    @DPTR,A
-//  386   gtwData.source = source;
+//  395   gtwData.source = source;
         MOV     DPTR,#gtwData
         MOV     A,R2
         MOVX    @DPTR,A
         INC     DPTR
         MOV     A,R3
         MOVX    @DPTR,A
-//  387   gtwData.temp = *pData;
+//  396   gtwData.temp = *pData;
         MOV     DPL,R0
         MOV     DPH,R1
         MOVX    A,@DPTR
         MOV     DPTR,#gtwData + 4
         MOVX    @DPTR,A
-//  388   gtwData.voltage = *(pData+1);
+//  397   gtwData.voltage = *(pData+1);
         MOV     DPL,R0
         MOV     DPH,R1
         INC     DPTR
         MOVX    A,@DPTR
         MOV     DPTR,#gtwData + 5
         MOVX    @DPTR,A
-//  389 
-//  390   // Flash LED 2 once to indicate data reception
-//  391   HalLedSet ( HAL_LED_2, HAL_LED_MODE_FLASH );
+//  398 
+//  399   // Flash LED 2 once to indicate data reception
+//  400   HalLedSet ( HAL_LED_2, HAL_LED_MODE_FLASH );
         ; Setup parameters for call to function HalLedSet
         MOV     R2,#0x4
         MOV     R1,#0x2
         LCALL   `??HalLedSet::?relay`; Banked call to: HalLedSet
-//  392 
-//  393   // Send gateway report
-//  394   sendGtwReport(&gtwData);
+//  401 
+//  402   // Send gateway report
+//  403   sendGtwReport(&gtwData);
         ; Setup parameters for call to function sendGtwReport
         MOV     R2,#gtwData & 0xff
         MOV     R3,#(gtwData >> 8) & 0xff
         LCALL   `??sendGtwReport::?relay`; Banked call to: sendGtwReport
-//  395 }
+//  404 }
         LJMP    ?Subroutine0 & 0xFFFF
           CFI EndBlock cfiBlock8
-//  396 
-//  397 /******************************************************************************
-//  398  * @fn          uartRxCB
-//  399  *
-//  400  * @brief       Callback function for UART
-//  401  *
-//  402  * @param       port - UART port
-//  403  *              event - UART event that caused callback
-//  404  *
-//  405  * @return      none
-//  406  */
+//  405 
+//  406 /******************************************************************************
+//  407  * @fn          uartRxCB
+//  408  *
+//  409  * @brief       Callback function for UART
+//  410  *
+//  411  * @param       port - UART port
+//  412  *              event - UART event that caused callback
+//  413  *
+//  414  * @return      none
+//  415  */
 
         RSEG BANKED_CODE:CODE:NOROOT(0)
-//  407 void uartRxCB( uint8 port, uint8 event )
+//  416 void uartRxCB( uint8 port, uint8 event )
 uartRxCB:
           CFI Block cfiBlock9 Using cfiCommon0
           CFI Function uartRxCB
         CODE
-//  408 {
+//  417 {
         FUNCALL uartRxCB, HalUARTRead
         LOCFRAME ISTACK, 0, STACK
         LOCFRAME PSTACK, 0, STACK
@@ -1500,22 +1515,22 @@ uartRxCB:
           CFI CFA_XSP16 add(XSP16, 145)
         MOV     A,R2
         MOV     R6,A
-//  409   (void)port;
-//  410 
-//  411   uint8 pBuf[RX_BUF_LEN];
-//  412   uint16 cmd;
-//  413   uint16 len;
-//  414 
-//  415   if ( event != HAL_UART_TX_EMPTY )
+//  418   (void)port;
+//  419 
+//  420   uint8 pBuf[RX_BUF_LEN];
+//  421   uint16 cmd;
+//  422   uint16 len;
+//  423 
+//  424   if ( event != HAL_UART_TX_EMPTY )
         MOV     A,#0x10
         XRL     A,R6
         JNZ     $+5
         LJMP    ??uartRxCB_0 & 0xFFFF
-//  416   {
-//  417     // Read from UART
-//  418     len = HalUARTRead( HAL_UART_PORT_0, pBuf, RX_BUF_LEN );
-//  419 
-//  420     if ( len > 0 )
+//  425   {
+//  426     // Read from UART
+//  427     len = HalUARTRead( HAL_UART_PORT_0, pBuf, RX_BUF_LEN );
+//  428 
+//  429     if ( len > 0 )
         ; Setup parameters for call to function HalUARTRead
         MOV     R4,#-0x80
         MOV     R5,#0x0
@@ -1527,10 +1542,10 @@ uartRxCB:
         MOV     A,R2
         ORL     A,?V1
         JZ      ??uartRxCB_0
-//  421     {
-//  422       cmd = BUILD_UINT16(pBuf[SYS_PING_CMD_OFFSET + 1], pBuf[SYS_PING_CMD_OFFSET]);
-//  423 
-//  424       if( (pBuf[FRAME_SOF_OFFSET] == CPT_SOP) && (cmd == SYS_PING_REQUEST) )
+//  430     {
+//  431       cmd = BUILD_UINT16(pBuf[SYS_PING_CMD_OFFSET + 1], pBuf[SYS_PING_CMD_OFFSET]);
+//  432 
+//  433       if( (pBuf[FRAME_SOF_OFFSET] == CPT_SOP) && (cmd == SYS_PING_REQUEST) )
         MOV     A,#0x7
         LCALL   ?XSTACK_DISP0_8
         MOVX    A,@DPTR
@@ -1550,8 +1565,8 @@ uartRxCB:
         XRL     A,R0
         ORL     A,R1
         JNZ     ??uartRxCB_0
-//  425       {
-//  426         sysPingReqRcvd();
+//  434       {
+//  435         sysPingReqRcvd();
         MOV     DPL,?XSP + 0
         MOV     DPH,?XSP + 1
         MOV     A,#-0x2
@@ -1597,10 +1612,10 @@ uartRxCB:
         MOV     R3,?XSP + 1
         MOV     R1,#0x0
         LCALL   `??HalUARTWrite::?relay`; Banked call to: HalUARTWrite
-//  427       }
-//  428     }
-//  429   }
-//  430 }
+//  436       }
+//  437     }
+//  438   }
+//  439 }
 ??uartRxCB_0:
         MOV     A,#-0x79
         LCALL   ?DEALLOC_XSTACK8
@@ -1640,72 +1655,72 @@ uartRxCB:
           CFI ?RET_HIGH Frame(CFA_SP, 2)
           CFI ?RET_LOW Frame(CFA_SP, 1)
           CFI EndBlock cfiBlock10
-//  431 
-//  432 /******************************************************************************
-//  433  * @fn          sysPingReqRcvd
-//  434  *
-//  435  * @brief       Ping request received
-//  436  *
-//  437  * @param       none
-//  438  *
-//  439  * @return      none
-//  440  */
-//  441 static void sysPingReqRcvd(void)
-//  442 {
-//  443    sysPingRsp();
-//  444 }
-//  445 
-//  446 /******************************************************************************
-//  447  * @fn          sysPingRsp
-//  448  *
-//  449  * @brief       Build and send Ping response
-//  450  *
-//  451  * @param       none
-//  452  *
-//  453  * @return      none
-//  454  */
-//  455 static void sysPingRsp(void)
-//  456 {
-//  457   uint8 pBuf[SYS_PING_RSP_LENGTH];
-//  458 
-//  459   // Start of Frame Delimiter
-//  460   pBuf[FRAME_SOF_OFFSET] = CPT_SOP;
-//  461 
-//  462   // Length
-//  463   pBuf[FRAME_LENGTH_OFFSET] = 2;
-//  464 
-//  465   // Command type
-//  466   pBuf[FRAME_CMD0_OFFSET] = LO_UINT16(SYS_PING_RESPONSE);
-//  467   pBuf[FRAME_CMD1_OFFSET] = HI_UINT16(SYS_PING_RESPONSE);
-//  468 
-//  469   // Stack profile
-//  470   pBuf[FRAME_DATA_OFFSET] = LO_UINT16(STACK_PROFILE);
-//  471   pBuf[FRAME_DATA_OFFSET + 1] = HI_UINT16(STACK_PROFILE);
-//  472 
-//  473   // Frame Check Sequence
-//  474   pBuf[SYS_PING_RSP_LENGTH - 1] = calcFCS(&pBuf[FRAME_LENGTH_OFFSET], (SYS_PING_RSP_LENGTH - 2));
-//  475 
-//  476   // Write frame to UART
-//  477   HalUARTWrite(HAL_UART_PORT_0,pBuf, SYS_PING_RSP_LENGTH);
-//  478 }
-//  479 
-//  480 /******************************************************************************
-//  481  * @fn          sendGtwReport
-//  482  *
-//  483  * @brief       Build and send gateway report
-//  484  *
-//  485  * @param       none
-//  486  *
-//  487  * @return      none
-//  488  */
+//  440 
+//  441 /******************************************************************************
+//  442  * @fn          sysPingReqRcvd
+//  443  *
+//  444  * @brief       Ping request received
+//  445  *
+//  446  * @param       none
+//  447  *
+//  448  * @return      none
+//  449  */
+//  450 static void sysPingReqRcvd(void)
+//  451 {
+//  452    sysPingRsp();
+//  453 }
+//  454 
+//  455 /******************************************************************************
+//  456  * @fn          sysPingRsp
+//  457  *
+//  458  * @brief       Build and send Ping response
+//  459  *
+//  460  * @param       none
+//  461  *
+//  462  * @return      none
+//  463  */
+//  464 static void sysPingRsp(void)
+//  465 {
+//  466   uint8 pBuf[SYS_PING_RSP_LENGTH];
+//  467 
+//  468   // Start of Frame Delimiter
+//  469   pBuf[FRAME_SOF_OFFSET] = CPT_SOP;
+//  470 
+//  471   // Length
+//  472   pBuf[FRAME_LENGTH_OFFSET] = 2;
+//  473 
+//  474   // Command type
+//  475   pBuf[FRAME_CMD0_OFFSET] = LO_UINT16(SYS_PING_RESPONSE);
+//  476   pBuf[FRAME_CMD1_OFFSET] = HI_UINT16(SYS_PING_RESPONSE);
+//  477 
+//  478   // Stack profile
+//  479   pBuf[FRAME_DATA_OFFSET] = LO_UINT16(STACK_PROFILE);
+//  480   pBuf[FRAME_DATA_OFFSET + 1] = HI_UINT16(STACK_PROFILE);
+//  481 
+//  482   // Frame Check Sequence
+//  483   pBuf[SYS_PING_RSP_LENGTH - 1] = calcFCS(&pBuf[FRAME_LENGTH_OFFSET], (SYS_PING_RSP_LENGTH - 2));
+//  484 
+//  485   // Write frame to UART
+//  486   HalUARTWrite(HAL_UART_PORT_0,pBuf, SYS_PING_RSP_LENGTH);
+//  487 }
+//  488 
+//  489 /******************************************************************************
+//  490  * @fn          sendGtwReport
+//  491  *
+//  492  * @brief       Build and send gateway report
+//  493  *
+//  494  * @param       none
+//  495  *
+//  496  * @return      none
+//  497  */
 
         RSEG BANKED_CODE:CODE:NOROOT(0)
-//  489 static void sendGtwReport(gtwData_t *gtwData)
+//  498 static void sendGtwReport(gtwData_t *gtwData)
 sendGtwReport:
           CFI Block cfiBlock11 Using cfiCommon0
           CFI Function sendGtwReport
         CODE
-//  490 {
+//  499 {
         FUNCALL sendGtwReport, HalUARTWrite
         LOCFRAME ISTACK, 2, STACK
         LOCFRAME PSTACK, 0, STACK
@@ -1728,36 +1743,36 @@ sendGtwReport:
         MOV     A,#-0xf
         LCALL   ?ALLOC_XSTACK8
           CFI CFA_XSP16 add(XSP16, 15)
-//  491   uint8 pFrame[ZB_RECV_LENGTH];
-//  492 
-//  493   // Start of Frame Delimiter
-//  494   pFrame[FRAME_SOF_OFFSET] = CPT_SOP; // Start of Frame Delimiter
+//  500   uint8 pFrame[ZB_RECV_LENGTH];
+//  501 
+//  502   // Start of Frame Delimiter
+//  503   pFrame[FRAME_SOF_OFFSET] = CPT_SOP; // Start of Frame Delimiter
         MOV     DPL,?XSP + 0
         MOV     DPH,?XSP + 1
         MOV     A,#-0x2
         MOVX    @DPTR,A
-//  495 
-//  496   // Length
-//  497   pFrame[FRAME_LENGTH_OFFSET] = 10;
+//  504 
+//  505   // Length
+//  506   pFrame[FRAME_LENGTH_OFFSET] = 10;
         MOV     A,#0x1
         LCALL   ?XSTACK_DISP0_8
         MOV     A,#0xa
         MOVX    @DPTR,A
-//  498 
-//  499   // Command type
-//  500   pFrame[FRAME_CMD0_OFFSET] = LO_UINT16(ZB_RECEIVE_DATA_INDICATION);
+//  507 
+//  508   // Command type
+//  509   pFrame[FRAME_CMD0_OFFSET] = LO_UINT16(ZB_RECEIVE_DATA_INDICATION);
         MOV     A,#0x2
         LCALL   ?XSTACK_DISP0_8
         MOV     A,#0x46
         MOVX    @DPTR,A
-//  501   pFrame[FRAME_CMD1_OFFSET] = HI_UINT16(ZB_RECEIVE_DATA_INDICATION);
+//  510   pFrame[FRAME_CMD1_OFFSET] = HI_UINT16(ZB_RECEIVE_DATA_INDICATION);
         MOV     A,#0x3
         LCALL   ?XSTACK_DISP0_8
         MOV     A,#-0x79
         MOVX    @DPTR,A
-//  502 
-//  503   // Source address
-//  504   pFrame[FRAME_DATA_OFFSET + ZB_RECV_SRC_OFFSET] = LO_UINT16(gtwData->source);
+//  511 
+//  512   // Source address
+//  513   pFrame[FRAME_DATA_OFFSET + ZB_RECV_SRC_OFFSET] = LO_UINT16(gtwData->source);
         MOV     DPL,R2
         MOV     DPH,R3
         MOVX    A,@DPTR
@@ -1768,7 +1783,7 @@ sendGtwReport:
         POP     A
           CFI CFA_SP SP+-5
         MOVX    @DPTR,A
-//  505   pFrame[FRAME_DATA_OFFSET + ZB_RECV_SRC_OFFSET+ 1] = HI_UINT16(gtwData->source);
+//  514   pFrame[FRAME_DATA_OFFSET + ZB_RECV_SRC_OFFSET+ 1] = HI_UINT16(gtwData->source);
         MOV     DPL,R2
         MOV     DPH,R3
         INC     DPTR
@@ -1780,33 +1795,33 @@ sendGtwReport:
         POP     A
           CFI CFA_SP SP+-5
         MOVX    @DPTR,A
-//  506 
-//  507   // Command ID
-//  508   pFrame[FRAME_DATA_OFFSET + ZB_RECV_CMD_OFFSET] = LO_UINT16(SENSOR_REPORT_CMD_ID);
+//  515 
+//  516   // Command ID
+//  517   pFrame[FRAME_DATA_OFFSET + ZB_RECV_CMD_OFFSET] = LO_UINT16(SENSOR_REPORT_CMD_ID);
         MOV     A,#0x6
         LCALL   ?XSTACK_DISP0_8
         MOV     A,#0x2
         MOVX    @DPTR,A
-//  509   pFrame[FRAME_DATA_OFFSET + ZB_RECV_CMD_OFFSET+ 1] = HI_UINT16(SENSOR_REPORT_CMD_ID);
+//  518   pFrame[FRAME_DATA_OFFSET + ZB_RECV_CMD_OFFSET+ 1] = HI_UINT16(SENSOR_REPORT_CMD_ID);
         MOV     A,#0x7
         LCALL   ?XSTACK_DISP0_8
         CLR     A
         MOVX    @DPTR,A
-//  510 
-//  511   // Length
-//  512   pFrame[FRAME_DATA_OFFSET + ZB_RECV_LEN_OFFSET] = LO_UINT16(4);
+//  519 
+//  520   // Length
+//  521   pFrame[FRAME_DATA_OFFSET + ZB_RECV_LEN_OFFSET] = LO_UINT16(4);
         MOV     A,#0x8
         LCALL   ?XSTACK_DISP0_8
         MOV     A,#0x4
         MOVX    @DPTR,A
-//  513   pFrame[FRAME_DATA_OFFSET + ZB_RECV_LEN_OFFSET+ 1] = HI_UINT16(4);
+//  522   pFrame[FRAME_DATA_OFFSET + ZB_RECV_LEN_OFFSET+ 1] = HI_UINT16(4);
         MOV     A,#0x9
         LCALL   ?XSTACK_DISP0_8
         CLR     A
         LCALL   ?Subroutine2 & 0xFFFF
-//  514 
-//  515   // Data
-//  516   pFrame[FRAME_DATA_OFFSET + ZB_RECV_DATA_OFFSET] = gtwData->temp;
+//  523 
+//  524   // Data
+//  525   pFrame[FRAME_DATA_OFFSET + ZB_RECV_DATA_OFFSET] = gtwData->temp;
 ??CrossCallReturnLabel_0:
         MOVX    A,@DPTR
         PUSH    A
@@ -1816,7 +1831,7 @@ sendGtwReport:
         POP     A
           CFI CFA_SP SP+-5
         LCALL   ?Subroutine2 & 0xFFFF
-//  517   pFrame[FRAME_DATA_OFFSET + ZB_RECV_DATA_OFFSET+ 1] = gtwData->voltage;
+//  526   pFrame[FRAME_DATA_OFFSET + ZB_RECV_DATA_OFFSET+ 1] = gtwData->voltage;
 ??CrossCallReturnLabel_1:
         INC     DPTR
         MOVX    A,@DPTR
@@ -1827,7 +1842,7 @@ sendGtwReport:
         POP     A
           CFI CFA_SP SP+-5
         MOVX    @DPTR,A
-//  518   pFrame[FRAME_DATA_OFFSET + ZB_RECV_DATA_OFFSET+ 2] = LO_UINT16(gtwData->parent);
+//  527   pFrame[FRAME_DATA_OFFSET + ZB_RECV_DATA_OFFSET+ 2] = LO_UINT16(gtwData->parent);
         MOV     A,R2
         ADD     A,#0x2
         MOV     R0,A
@@ -1844,7 +1859,7 @@ sendGtwReport:
         POP     A
           CFI CFA_SP SP+-5
         MOVX    @DPTR,A
-//  519   pFrame[FRAME_DATA_OFFSET + ZB_RECV_DATA_OFFSET+ 3] = HI_UINT16(gtwData->parent);
+//  528   pFrame[FRAME_DATA_OFFSET + ZB_RECV_DATA_OFFSET+ 3] = HI_UINT16(gtwData->parent);
         MOV     DPL,R0
         MOV     DPH,R1
         INC     DPTR
@@ -1856,9 +1871,9 @@ sendGtwReport:
         POP     A
           CFI CFA_SP SP+-5
         MOVX    @DPTR,A
-//  520 
-//  521   // Frame Check Sequence
-//  522   pFrame[ZB_RECV_LENGTH - 1] = calcFCS(&pFrame[FRAME_LENGTH_OFFSET], (ZB_RECV_LENGTH - 2) );
+//  529 
+//  530   // Frame Check Sequence
+//  531   pFrame[ZB_RECV_LENGTH - 1] = calcFCS(&pFrame[FRAME_LENGTH_OFFSET], (ZB_RECV_LENGTH - 2) );
         MOV     A,#0x1
         LCALL   ?XSTACK_DISP0_8
         MOV     R0,#0x0
@@ -1874,9 +1889,9 @@ sendGtwReport:
         LCALL   ?XSTACK_DISP0_8
         MOV     A,R0
         MOVX    @DPTR,A
-//  523 
-//  524   // Write report to UART
-//  525   HalUARTWrite(HAL_UART_PORT_0,pFrame, ZB_RECV_LENGTH);
+//  532 
+//  533   // Write report to UART
+//  534   HalUARTWrite(HAL_UART_PORT_0,pFrame, ZB_RECV_LENGTH);
         ; Setup parameters for call to function HalUARTWrite
         MOV     R4,#0xf
         MOV     R5,#0x0
@@ -1884,7 +1899,7 @@ sendGtwReport:
         MOV     R3,?XSP + 1
         MOV     R1,#0x0
         LCALL   `??HalUARTWrite::?relay`; Banked call to: HalUARTWrite
-//  526 }
+//  535 }
         MOV     A,#0xf
         LCALL   ?DEALLOC_XSTACK8
           CFI CFA_XSP16 XSP16+0
@@ -2007,31 +2022,31 @@ sendGtwReport:
         DC24    sendGtwReport
 
         END
-//  527 
-//  528 /******************************************************************************
-//  529  * @fn          calcFCS
-//  530  *
-//  531  * @brief       This function calculates the FCS checksum for the serial message
-//  532  *
-//  533  * @param       pBuf - Pointer to the end of a buffer to calculate the FCS.
-//  534  *              len - Length of the pBuf.
-//  535  *
-//  536  * @return      The calculated FCS.
-//  537  ******************************************************************************
-//  538  */
-//  539 static uint8 calcFCS(uint8 *pBuf, uint8 len)
-//  540 {
-//  541   uint8 rtrn = 0;
-//  542 
-//  543   while ( len-- )
-//  544   {
-//  545     rtrn ^= *pBuf++;
-//  546   }
-//  547 
-//  548   return rtrn;
-//  549 }
+//  536 
+//  537 /******************************************************************************
+//  538  * @fn          calcFCS
+//  539  *
+//  540  * @brief       This function calculates the FCS checksum for the serial message
+//  541  *
+//  542  * @param       pBuf - Pointer to the end of a buffer to calculate the FCS.
+//  543  *              len - Length of the pBuf.
+//  544  *
+//  545  * @return      The calculated FCS.
+//  546  ******************************************************************************
+//  547  */
+//  548 static uint8 calcFCS(uint8 *pBuf, uint8 len)
+//  549 {
+//  550   uint8 rtrn = 0;
+//  551 
+//  552   while ( len-- )
+//  553   {
+//  554     rtrn ^= *pBuf++;
+//  555   }
+//  556 
+//  557   return rtrn;
+//  558 }
 // 
-// 701 bytes in segment BANKED_CODE
+// 710 bytes in segment BANKED_CODE
 //  60 bytes in segment BANK_RELAYS
 //   2 bytes in segment SFR_AN
 //   1 byte  in segment XDATA_I
@@ -2039,7 +2054,7 @@ sendGtwReport:
 //  14 bytes in segment XDATA_ROM_C
 //   8 bytes in segment XDATA_Z
 // 
-// 762 bytes of CODE  memory
+// 771 bytes of CODE  memory
 //  14 bytes of CONST memory
 //   0 bytes of DATA  memory (+ 2 bytes shared)
 //   9 bytes of XDATA memory

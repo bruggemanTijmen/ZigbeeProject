@@ -184,7 +184,9 @@ void zb_HandleOsalEvent( uint16 event )
     // Initialise UART
     initUart(uartRxCB);
     MCU_IO_DIR_OUTPUT(0, 4);
-     MCU_IO_DIR_OUTPUT(0, 1);
+    MCU_IO_DIR_OUTPUT(0, 7);
+    MCU_IO_DIR_INPUT(0, 2);
+    
     // blind LED 1 to indicate starting/joining a network
     HalLedBlink ( HAL_LED_1, 0, 50, 500 );
     HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF );
@@ -248,13 +250,20 @@ void zb_HandleKeys( uint8 shift, uint8 keys )
     {
       while(1){
         if(HalAdcRead(HAL_ADC_CHANNEL_0, HAL_ADC_RESOLUTION_12)>1500){
-        MCU_IO_SET_LOW(0, 4);
-        MCU_IO_SET_LOW(0, 1);
-      }
-      else{
-        MCU_IO_SET_HIGH(0, 4);
-        MCU_IO_SET_HIGH(0, 1);
-      }
+       // MCU_IO_SET_LOW(0, 4);
+          MCU_IO_SET_LOW(0, 7);
+        }
+        else{
+       //   MCU_IO_SET_HIGH(0, 4);
+          MCU_IO_SET_HIGH(0, 7);
+        }
+        if(MCU_IO_GET(0, 2)){
+           MCU_IO_SET_HIGH(0, 4);
+        
+        }
+        else{
+          MCU_IO_SET_LOW(0, 4);
+        }
       }
     }
     if ( keys & HAL_KEY_SW_3 )

@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.2\common\bin\cspybat" -f "C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\settings\DemoApp.CoordinatorEB.general.xcl" --backend -f "C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\settings\DemoApp.CoordinatorEB.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.2\common\bin\cspybat" -f "C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\settings\DemoApp.CoordinatorEB.general.xcl" --backend -f "C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\settings\DemoApp.CoordinatorEB.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.2\common\bin\cspybat" -f "C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\settings\DemoApp.CoordinatorEB.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Tijmen\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\settings\DemoApp.CoordinatorEB.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.2\common\bin\cspybat" -f "C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\settings\DemoApp.CoordinatorEB.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Arnout\Documents\ZigbeeProject\Projects\zstack\Samples\DemoApp\CC2530DB\settings\DemoApp.CoordinatorEB.driver.xcl" 
 
 @echo off 
 :end
