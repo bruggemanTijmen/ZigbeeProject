@@ -191,7 +191,7 @@ void zb_HandleOsalEvent( uint16 event )
       static int8 oldValue;
       int8 newValue = readTemp();
       if(oldValue != newValue || counter == 11){
-        sendReport();
+        //sendReport();
         counter = 0;
       }
       oldValue = newValue;
@@ -208,7 +208,7 @@ void zb_HandleOsalEvent( uint16 event )
 
     appState = APP_BIND;
     // Find and bind to a collector device
-    zb_BindDevice( TRUE, SENSOR_REPORT_CMD_ID, (uint8 *)NULL );
+    zb_BindDevice( TRUE, LIGHT_REPORT_CMD_ID, (uint8 *)NULL );
   }
 }
 
@@ -257,6 +257,7 @@ void zb_HandleKeys( uint8 shift, uint8 keys )
     }
     if ( keys & HAL_KEY_SW_2 )
     {
+      sendReport();
     }
     if ( keys & HAL_KEY_SW_3 )
     {
@@ -332,7 +333,7 @@ void zb_SendDataConfirm( uint8 handle, uint8 status )
        reportState = TRUE;
 
        // Delete previous binding
-       zb_BindDevice( FALSE, SENSOR_REPORT_CMD_ID, (uint8 *)NULL );
+       zb_BindDevice( FALSE, LIGHT_REPORT_CMD_ID, (uint8 *)NULL );
 
       // Try to bind a new gateway
        osal_start_timerEx( sapi_TaskID, MY_FIND_COLLECTOR_EVT, myBindRetryDelay );
@@ -494,7 +495,8 @@ static void sendReport(void)
   // Destination address 0xFFFE: Destination address is sent to previously
   // established binding for the commandId.
   
-  zb_SendDataRequest( 0xFFFE, SENSOR_REPORT_CMD_ID, SENSOR_REPORT_LENGTH, pData, 0, txOptions, 0 );
+  //zb_SendDataRequest( 0xFFFE, SENSOR_REPORT_CMD_ID, SENSOR_REPORT_LENGTH, pData, 0, txOptions, 0 );
+  zb_SendDataRequest( 0xFFFE, LIGHT_REPORT_CMD_ID, SENSOR_REPORT_LENGTH, pData, 0, txOptions, 0 );
 }
 
 /******************************************************************************
