@@ -103,20 +103,33 @@ static uint8 myStartRetryDelay =  10;           // milliseconds
 
 static uint16 parentShortAddr;
 
+
+/*
+
+output: Light is on/off
+input: Light on/off
+#define NUM_OUT_LIGHT_COLLECTOR
+#define NUM_IN_LIGHT_COLLECTOR
+
+*/
 /******************************************************************************
  * GLOBAL VARIABLES
  */
 
 // Inputs and Outputs for Sensor device
 #define NUM_OUT_CMD_SENSOR        1
-#define NUM_IN_CMD_SENSOR         0
+#define NUM_IN_CMD_SENSOR         1
 
 // List of output and input commands for Sensor device
 const cId_t zb_OutCmdList[NUM_OUT_CMD_SENSOR] =
 {
-  SENSOR_REPORT_CMD_ID
+  LIGHT_REPORT_CMD_ID
 };
-
+// List of output and input commands for Sensor device
+const cId_t zb_InCmdList[NUM_OUT_CMD_SENSOR] =
+{
+  LIGHT_REPORT_CMD_ID
+};
 // Define SimpleDescriptor for Sensor device
 const SimpleDescriptionFormat_t zb_SimpleDesc =
 {
@@ -126,7 +139,7 @@ const SimpleDescriptionFormat_t zb_SimpleDesc =
   DEVICE_VERSION_SENSOR,      //  Device Version
   0,                          //  Reserved
   NUM_IN_CMD_SENSOR,          //  Number of Input Commands
-  (cId_t *) NULL,             //  Input Command List
+  (cId_t *) zb_InCmdList,             //  Input Command List
   NUM_OUT_CMD_SENSOR,         //  Number of Output Commands
   (cId_t *) zb_OutCmdList     //  Output Command List
 };

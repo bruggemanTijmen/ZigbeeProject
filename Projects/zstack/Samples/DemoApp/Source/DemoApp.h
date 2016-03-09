@@ -63,8 +63,8 @@
 #define DEVICE_VERSION_COLLECTOR          1
 
 // Define the Command ID's used in this application
-#define SENSOR_REPORT_CMD_ID              2
-#define DUMMY_REPORT_CMD_ID               3
+#define LIGHT_REPORT_CMD_ID              2
+#define DOOR_REPORT_CMD_ID               3
 
 // Sensor report data format
 #define SENSOR_TEMP_OFFSET                0

@@ -136,15 +136,33 @@ static void sendGtwReport(gtwData_t *gtwData);
  */
 
 // Inputs and Outputs for Collector device
-#define NUM_OUT_CMD_COLLECTOR           0
-#define NUM_IN_CMD_COLLECTOR            1
+#define NUM_OUT_CMD_COLLECTOR           2
+#define NUM_IN_CMD_COLLECTOR            2
+
+/*
+Input: door open/close
+Output: door open/close
+#define NUM_OUT_DOOR_COLLECTOR
+#define NUM_IN_DOOR_COLLECTOR
+
+output: Light is on/off
+input: Light on/off
+#define NUM_OUT_LIGHT_COLLECTOR
+#define NUM_IN_LIGHT_COLLECTOR
+
+*/
 
 // List of output and input commands for Collector device
 const cId_t zb_InCmdList[NUM_IN_CMD_COLLECTOR] =
 {
-  SENSOR_REPORT_CMD_ID,
+    LIGHT_REPORT_CMD_ID,
+    DOOR_REPORT_CMD_ID,
 };
-
+const cId_t zb_OutCmdList[NUM_OUT_CMD_SENSOR] =
+{
+    LIGHT_REPORT_CMD_ID,
+    DOOR_REPORT_CMD_ID,
+};
 // Define SimpleDescriptor for Collector device
 const SimpleDescriptionFormat_t zb_SimpleDesc =
 {
@@ -156,7 +174,7 @@ const SimpleDescriptionFormat_t zb_SimpleDesc =
   NUM_IN_CMD_COLLECTOR,       //  Number of Input Commands
   (cId_t *) zb_InCmdList,     //  Input Command List
   NUM_OUT_CMD_COLLECTOR,      //  Number of Output Commands
-  (cId_t *) NULL              //  Output Command List
+  (cId_t *) zb_OutCmdList     //  Output Command List
 };
 
 /******************************************************************************
