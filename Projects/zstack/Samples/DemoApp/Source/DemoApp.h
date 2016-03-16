@@ -65,6 +65,8 @@
 // Define the Command ID's used in this application
 #define LIGHT_REPORT_CMD_ID              2
 #define DOOR_REPORT_CMD_ID               3
+#define DOOR_BUTTON_CMD_ID               4
+#define LIGHT_BUTTON_CMD_ID              5
 
 // Sensor report data format
 #define SENSOR_TEMP_OFFSET                0

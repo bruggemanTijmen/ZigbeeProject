@@ -155,8 +155,8 @@ input: Light on/off
 // List of output and input commands for Collector device
 const cId_t zb_InCmdList[NUM_IN_CMD_COLLECTOR] =
 {
-    LIGHT_REPORT_CMD_ID,
-    DOOR_REPORT_CMD_ID,
+    LIGHT_BUTTON_CMD_ID,
+    DOOR_BUTTON_CMD_ID,
 };
 const cId_t zb_OutCmdList[NUM_OUT_CMD_COLLECTOR] =
 {
@@ -235,6 +235,12 @@ void zb_HandleOsalEvent( uint16 event )
  *
  * @return  none
  */
+   static void sendReport82(void)
+{
+
+  //zb_SendDataRequest( 0xFFFE, SENSOR_REPORT_CMD_ID, SENSOR_REPORT_LENGTH, pData, 0, txOptions, 0 );
+  zb_SendDataRequest( 0xFFFE, LIGHT_REPORT_CMD_ID, NULL, NULL, 0, 0, 0 );
+}
 void zb_HandleKeys( uint8 shift, uint8 keys )
 {
 
@@ -267,6 +273,7 @@ void zb_HandleKeys( uint8 shift, uint8 keys )
     } 
     if ( keys & HAL_KEY_SW_2 )
     {
+      sendReport82();
       /*
       while(1){
         if(HalAdcRead(HAL_ADC_CHANNEL_0, HAL_ADC_RESOLUTION_12)>1500){
@@ -356,7 +363,11 @@ void zb_SendDataConfirm( uint8 handle, uint8 status )
  */
 void zb_BindConfirm( uint16 commandId, uint8 status )
 {
-
+   
+  if( status == ZB_SUCCESS ){
+    HalLedSet( HAL_LED_1, HAL_LED_MODE_ON );
+  }
+  
   (void)commandId;
   (void)status;
 }
@@ -372,10 +383,11 @@ void zb_BindConfirm( uint16 commandId, uint8 status )
  */
 void zb_AllowBindConfirm( uint16 source )
 {
-    HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF );
-    HalLedSet( HAL_LED_3, HAL_LED_MODE_OFF );
-    HalLedSet( HAL_LED_1, HAL_LED_MODE_OFF );
- //   zb_BindDevice( TRUE, LIGHT_REPORT_CMD_ID, (uint8 *)NULL );
+   HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF );
+   HalLedSet( HAL_LED_3, HAL_LED_MODE_OFF );
+   HalLedSet( HAL_LED_1, HAL_LED_MODE_OFF );
+   
+   zb_BindDevice( TRUE, LIGHT_REPORT_CMD_ID, (uint8 *)NULL );
   (void)source;
 }
 
@@ -416,7 +428,7 @@ void zb_ReceiveDataIndication( uint16 source, uint16 command, uint16 len, uint8 
 {
   (void)command;
   (void)len;
-  if(command == LIGHT_REPORT_CMD_ID){
+  if(command == LIGHT_BUTTON_CMD_ID){
    // changeLight();
     static int a = 0;
     if(a){

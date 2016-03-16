@@ -123,7 +123,7 @@ input: Light on/off
 // List of output and input commands for Sensor device
 const cId_t zb_OutCmdList[NUM_OUT_CMD_SENSOR] =
 {
-  LIGHT_REPORT_CMD_ID
+  LIGHT_BUTTON_CMD_ID
 };
 // List of output and input commands for Sensor device
 const cId_t zb_InCmdList[NUM_OUT_CMD_SENSOR] =
@@ -208,7 +208,7 @@ void zb_HandleOsalEvent( uint16 event )
 
     appState = APP_BIND;
     // Find and bind to a collector device
-    zb_BindDevice( TRUE, LIGHT_REPORT_CMD_ID, (uint8 *)NULL );
+    zb_BindDevice( TRUE, LIGHT_BUTTON_CMD_ID, (uint8 *)NULL );
   }
 }
 
@@ -369,7 +369,7 @@ void zb_BindConfirm( uint16 commandId, uint8 status )
     HalLedSet( HAL_LED_3, HAL_LED_MODE_OFF );
     HalLedSet( HAL_LED_1, HAL_LED_MODE_OFF );
 
-   // zb_AllowBind( 0xFF );
+    zb_AllowBind( 0xFF );
     
     
     // After failure reporting start automatically when the device
@@ -404,6 +404,7 @@ void zb_BindConfirm( uint16 commandId, uint8 status )
  */
 void zb_AllowBindConfirm( uint16 source )
 {
+     HalLedSet( HAL_LED_1, HAL_LED_MODE_ON );
   (void)source;
 }
 
@@ -442,6 +443,17 @@ void zb_FindDeviceConfirm( uint8 searchType, uint8 *searchKey, uint8 *result )
  */
 void zb_ReceiveDataIndication( uint16 source, uint16 command, uint16 len, uint8 *pData  )
 {
+  static int a = 0;
+  if(command == LIGHT_REPORT_CMD_ID){
+    if(a){
+        HalLedSet( HAL_LED_1, HAL_LED_MODE_ON );
+        a = 0;
+    }
+    else{
+        HalLedSet( HAL_LED_1, HAL_LED_MODE_ON );
+        a = 1;
+    }
+  }
   (void)source;
   (void)command;
   (void)len;
@@ -502,7 +514,7 @@ static void sendReport(void)
   // established binding for the commandId.
   
   //zb_SendDataRequest( 0xFFFE, SENSOR_REPORT_CMD_ID, SENSOR_REPORT_LENGTH, pData, 0, txOptions, 0 );
-  zb_SendDataRequest( 0xFFFE, LIGHT_REPORT_CMD_ID, SENSOR_REPORT_LENGTH, pData, 0, txOptions, 0 );
+  zb_SendDataRequest( 0xFFFE, LIGHT_BUTTON_CMD_ID, SENSOR_REPORT_LENGTH, pData, 0, txOptions, 0 );
 }
 
 /******************************************************************************
