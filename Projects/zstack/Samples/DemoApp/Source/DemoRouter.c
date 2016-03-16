@@ -248,6 +248,7 @@ void zb_HandleKeys( uint8 shift, uint8 keys )
   {
     if ( keys & HAL_KEY_SW_1 )
     {
+  
       // Start reporting
       if ( reportState == FALSE ) {
         osal_set_event( sapi_TaskID, MY_REPORT_EVT );
@@ -365,7 +366,12 @@ void zb_BindConfirm( uint16 commandId, uint8 status )
   {
     appState = APP_REPORT;
     HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF );
+    HalLedSet( HAL_LED_3, HAL_LED_MODE_OFF );
+    HalLedSet( HAL_LED_1, HAL_LED_MODE_OFF );
 
+   // zb_AllowBind( 0xFF );
+    
+    
     // After failure reporting start automatically when the device
     // is binded to a new gateway
     if ( reportState )

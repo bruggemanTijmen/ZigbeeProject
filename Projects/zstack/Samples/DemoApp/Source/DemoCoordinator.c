@@ -201,9 +201,11 @@ void zb_HandleOsalEvent( uint16 event )
   {
     // Initialise UART
     initUart(uartRxCB);
-    MCU_IO_DIR_OUTPUT(0, 4);
-    MCU_IO_DIR_OUTPUT(0, 7);
+    MCU_IO_DIR_OUTPUT(0, 4); // LED
+    MCU_IO_DIR_OUTPUT(0, 7); // 
     MCU_IO_DIR_INPUT(0, 2);
+    
+    MCU_IO_SET_LOW(0, 4);
     
     // blind LED 1 to indicate starting/joining a network
     HalLedBlink ( HAL_LED_1, 0, 50, 500 );
@@ -246,7 +248,6 @@ void zb_HandleKeys( uint8 shift, uint8 keys )
   {
     if ( keys & HAL_KEY_SW_1 )
     {
-      MCU_IO_SET_HIGH(0, 4);
       if ( appState == APP_START )
       {
         allowBind ^= 1;
@@ -266,6 +267,7 @@ void zb_HandleKeys( uint8 shift, uint8 keys )
     } 
     if ( keys & HAL_KEY_SW_2 )
     {
+      /*
       while(1){
         if(HalAdcRead(HAL_ADC_CHANNEL_0, HAL_ADC_RESOLUTION_12)>1500){
        // MCU_IO_SET_LOW(0, 4);
@@ -283,6 +285,7 @@ void zb_HandleKeys( uint8 shift, uint8 keys )
           MCU_IO_SET_LOW(0, 4);
         }
       }
+      */
     }
     if ( keys & HAL_KEY_SW_3 )
     {
@@ -353,6 +356,7 @@ void zb_SendDataConfirm( uint8 handle, uint8 status )
  */
 void zb_BindConfirm( uint16 commandId, uint8 status )
 {
+
   (void)commandId;
   (void)status;
 }
@@ -368,6 +372,10 @@ void zb_BindConfirm( uint16 commandId, uint8 status )
  */
 void zb_AllowBindConfirm( uint16 source )
 {
+    HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF );
+    HalLedSet( HAL_LED_3, HAL_LED_MODE_OFF );
+    HalLedSet( HAL_LED_1, HAL_LED_MODE_OFF );
+ //   zb_BindDevice( TRUE, LIGHT_REPORT_CMD_ID, (uint8 *)NULL );
   (void)source;
 }
 
@@ -408,15 +416,26 @@ void zb_ReceiveDataIndication( uint16 source, uint16 command, uint16 len, uint8 
 {
   (void)command;
   (void)len;
-
+  if(command == LIGHT_REPORT_CMD_ID){
+   // changeLight();
+    static int a = 0;
+    if(a){
+     MCU_IO_SET_HIGH(0, 4);
+     a = 0;
+    }
+    else{
+       MCU_IO_SET_LOW(0, 4);
+       a = 1;
+    }
+  }
   gtwData.parent = BUILD_UINT16(pData[SENSOR_PARENT_OFFSET+ 1], pData[SENSOR_PARENT_OFFSET]);
   gtwData.source = source;
   gtwData.temp = *pData;
   gtwData.voltage = *(pData+1);
-
+  
   // Flash LED 2 once to indicate data reception
   HalLedSet ( HAL_LED_2, HAL_LED_MODE_FLASH );
-
+ 
   // Send gateway report
   sendGtwReport(&gtwData);
 }
