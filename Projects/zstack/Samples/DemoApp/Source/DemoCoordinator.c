@@ -103,6 +103,7 @@
 // Application osal event identifiers
 #define MY_START_EVT                        0x0001
 #define MY_BIND_EVT                         0x0002
+#define MY_BIND_DOOR_EVT                         0x0003
 #define MY_LDR_POLL_EVT                     0x0004
 
 /******************************************************************************
@@ -119,10 +120,10 @@ typedef struct
 /******************************************************************************
  * LOCAL VARIABLES
  */
-
+bool SensorBinded = false;
 static uint8 appState =             APP_INIT;
 static uint8 myStartRetryDelay =    10;          // milliseconds
-static uint16 myBindDelay = 3000;
+static uint16 myBindDelay = 500;
 static uint16 myPollDelay = 300;
 static gtwData_t gtwData;
 static int ledState = 0;
@@ -228,9 +229,13 @@ void zb_HandleOsalEvent( uint16 event )
   }
     if ( event & MY_BIND_EVT )
   {
-    zb_BindDevice( TRUE, LIGHT_REPORT_CMD_ID, (uint8 *)NULL );
+    if(SensorBinded){
+        zb_BindDevice( TRUE, LIGHT_REPORT_CMD_ID, (uint8 *)NULL );
+    } else{
+        zb_BindDevice( TRUE, DOOR_REPORT_CMD_ID, (uint8 *)NULL );
+    }
   }
- 
+
   if ( event & MY_LDR_POLL_EVT){
      if(HalAdcRead(HAL_ADC_CHANNEL_0, HAL_ADC_RESOLUTION_12)<1500){
           if(ledState){
@@ -387,10 +392,16 @@ void zb_SendDataConfirm( uint8 handle, uint8 status )
  */
 void zb_BindConfirm( uint16 commandId, uint8 status )
 {
-   
+  
   if( status == ZB_SUCCESS ){
-    HalLedSet( HAL_LED_1, HAL_LED_MODE_ON );
-    osal_set_event( sapi_TaskID, MY_LDR_POLL_EVT);
+    if(commandId == DOOR_REPORT_CMD_ID){
+      SensorBinded = true;
+      HalLedSet( HAL_LED_2, HAL_LED_MODE_ON );
+    } 
+    
+      HalLedSet( HAL_LED_1, HAL_LED_MODE_ON );
+      osal_set_event( sapi_TaskID, MY_LDR_POLL_EVT);
+    
   }
   
   (void)commandId;
@@ -408,11 +419,12 @@ void zb_BindConfirm( uint16 commandId, uint8 status )
  */
 void zb_AllowBindConfirm( uint16 source )
 {
+   HalLedSet( HAL_LED_1, HAL_LED_MODE_OFF );
    HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF );
    HalLedSet( HAL_LED_3, HAL_LED_MODE_OFF );
-   HalLedSet( HAL_LED_1, HAL_LED_MODE_OFF );
    
    osal_start_timerEx( sapi_TaskID, MY_BIND_EVT, myBindDelay );
+   
   (void)source;
 }
 

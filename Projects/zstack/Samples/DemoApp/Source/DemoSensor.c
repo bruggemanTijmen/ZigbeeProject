@@ -121,7 +121,7 @@ input: Close/open door
 // List of output and input commands for Sensor device
 const cId_t zb_OutCmdList[NUM_OUT_CMD_SENSOR] =
 {
-  DOOR_REPORT_CMD_ID
+  DOOR_BUTTON_CMD_ID
 };
 // List of output and input commands for Sensor device
 const cId_t zb_InCmdList[NUM_OUT_CMD_SENSOR] =
@@ -203,15 +203,13 @@ void zb_HandleOsalEvent( uint16 event )
     // Delete previous binding
     if ( appState == APP_REPORT )
     {
-      zb_BindDevice( FALSE, SENSOR_REPORT_CMD_ID, (uint8 *)NULL );
+      zb_BindDevice( FALSE, DOOR_BUTTON_CMD_ID, (uint8 *)NULL );
     }
 
     appState = APP_BIND;
-    // blink LED 2 to indicate discovery and binding
-    HalLedBlink ( HAL_LED_2, 0, 50, 500 );
 
     // Find and bind to a collector device
-    zb_BindDevice( TRUE, SENSOR_REPORT_CMD_ID, (uint8 *)NULL );
+    zb_BindDevice( TRUE, DOOR_BUTTON_CMD_ID, (uint8 *)NULL );
   }
 }
 
@@ -256,7 +254,7 @@ void zb_HandleKeys( uint8 shift, uint8 keys )
         osal_set_event( sapi_TaskID, MY_REPORT_EVT );
         reportState = TRUE;
 
-        // blink LED 2 to indicate reporting
+        //  LED 2 to indicate reporting
         HalLedBlink ( HAL_LED_2, 0, 50, 500 );
       }
     }
@@ -361,15 +359,16 @@ void zb_BindConfirm( uint16 commandId, uint8 status )
   if( status == ZB_SUCCESS )
   {
     appState = APP_REPORT;
-    HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF );
 
+    HalLedSet( HAL_LED_3, HAL_LED_MODE_OFF );
+    HalLedSet( HAL_LED_1, HAL_LED_MODE_OFF );
+    HalLedSet( HAL_LED_2, HAL_LED_MODE_ON );
+    zb_AllowBind( 0xFF );
+    
     // After failure reporting start automatically when the device
     // is binded to a new gateway
     if ( reportState )
     {
-      // blink LED 2 to indicate reporting
-      HalLedBlink ( HAL_LED_2, 0, 50, 500 );
-
       // Start reporting
       osal_set_event( sapi_TaskID, MY_REPORT_EVT );
     }
@@ -391,6 +390,7 @@ void zb_BindConfirm( uint16 commandId, uint8 status )
  */
 void zb_AllowBindConfirm( uint16 source )
 {
+  HalLedSet( HAL_LED_2, HAL_LED_MODE_ON );
   (void)source;
 }
 
@@ -488,7 +488,7 @@ static void sendReport(void)
   }
   // Destination address 0xFFFE: Destination address is sent to previously
   // established binding for the commandId.
-  zb_SendDataRequest( 0xFFFE, SENSOR_REPORT_CMD_ID, SENSOR_REPORT_LENGTH, pData, 0, txOptions, 0 );
+  zb_SendDataRequest( 0xFFFE, DOOR_BUTTON_CMD_ID, 0, pData, 0, txOptions, 0 );
 }
 
 /******************************************************************************
