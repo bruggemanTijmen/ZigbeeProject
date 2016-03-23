@@ -102,7 +102,8 @@
 
 // Application osal event identifiers
 #define MY_START_EVT                        0x0001
-
+#define MY_BIND_EVT                         0x0002
+   
 /******************************************************************************
  * TYPEDEFS
  */
@@ -120,6 +121,7 @@ typedef struct
 
 static uint8 appState =             APP_INIT;
 static uint8 myStartRetryDelay =    10;          // milliseconds
+static uint16 myBindDelay = 500;
 static gtwData_t gtwData;
 
 /******************************************************************************
@@ -218,6 +220,11 @@ void zb_HandleOsalEvent( uint16 event )
   if ( event & MY_START_EVT )
   {
     zb_StartRequest();
+  }
+    if ( event & MY_BIND_EVT )
+  {
+    
+    zb_BindDevice( TRUE, LIGHT_REPORT_CMD_ID, (uint8 *)NULL );
   }
 }
 
@@ -387,7 +394,7 @@ void zb_AllowBindConfirm( uint16 source )
    HalLedSet( HAL_LED_3, HAL_LED_MODE_OFF );
    HalLedSet( HAL_LED_1, HAL_LED_MODE_OFF );
    
-   zb_BindDevice( TRUE, LIGHT_REPORT_CMD_ID, (uint8 *)NULL );
+   osal_start_timerEx( sapi_TaskID, MY_BIND_EVT, myBindDelay );
   (void)source;
 }
 

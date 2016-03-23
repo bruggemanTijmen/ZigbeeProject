@@ -71,6 +71,7 @@
 // Bit mask of events ( from 0x0000 to 0x00FF )
 #define MY_START_EVT                        0x0001
 #define MY_REPORT_EVT                       0x0002
+
 #define MY_FIND_COLLECTOR_EVT               0x0004
 
 // ADC definitions for CC2430/CC2530 from the hal_adc.c file
