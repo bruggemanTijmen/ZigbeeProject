@@ -175,6 +175,8 @@ void zb_HandleOsalEvent( uint16 event )
     // blind LED 1 to indicate joining a network
     HalLedBlink ( HAL_LED_1, 0, 50, 500 );
     MCU_IO_DIR_OUTPUT(1, 2); // 
+    MCU_IO_SET_LOW(1, 2);
+    
     // Start the device
     zb_StartRequest();
   }
@@ -443,15 +445,15 @@ void zb_FindDeviceConfirm( uint8 searchType, uint8 *searchKey, uint8 *result )
  */
 void zb_ReceiveDataIndication( uint16 source, uint16 command, uint16 len, uint8 *pData  )
 {
-  static int a = 0;
+  static int ledState = 0;
   if(command == LIGHT_REPORT_CMD_ID){
-    if(a){
-        MCU_IO_SET_HIGH(1, 2);
-        a = 0;
+    if(ledState){
+        MCU_IO_SET_LOW(1, 2);
+        ledState = 0;
     }
     else{
-        MCU_IO_SET_LOW(1, 2);
-        a = 1;
+        MCU_IO_SET_HIGH(1, 2);
+        ledState = 1;
     }
   }
   (void)source;

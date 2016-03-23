@@ -103,7 +103,8 @@
 // Application osal event identifiers
 #define MY_START_EVT                        0x0001
 #define MY_BIND_EVT                         0x0002
-   
+#define MY_LDR_POLL_EVT                     0x0004
+
 /******************************************************************************
  * TYPEDEFS
  */
@@ -121,8 +122,10 @@ typedef struct
 
 static uint8 appState =             APP_INIT;
 static uint8 myStartRetryDelay =    10;          // milliseconds
-static uint16 myBindDelay = 500;
+static uint16 myBindDelay = 3000;
+static uint16 myPollDelay = 300;
 static gtwData_t gtwData;
+static int ledState = 0;
 
 /******************************************************************************
  * LOCAL FUNCTIONS
@@ -132,6 +135,7 @@ static uint8 calcFCS(uint8 *pBuf, uint8 len);
 static void sysPingReqRcvd(void);
 static void sysPingRsp(void);
 static void sendGtwReport(gtwData_t *gtwData);
+static void sendLightSwitchReport(void);
 
 /******************************************************************************
  * GLOBAL VARIABLES
@@ -215,6 +219,7 @@ void zb_HandleOsalEvent( uint16 event )
 
     // Start the device
     zb_StartRequest();
+    
   }
 
   if ( event & MY_START_EVT )
@@ -223,8 +228,20 @@ void zb_HandleOsalEvent( uint16 event )
   }
     if ( event & MY_BIND_EVT )
   {
-    
     zb_BindDevice( TRUE, LIGHT_REPORT_CMD_ID, (uint8 *)NULL );
+  }
+ 
+  if ( event & MY_LDR_POLL_EVT){
+     if(HalAdcRead(HAL_ADC_CHANNEL_0, HAL_ADC_RESOLUTION_12)<1500){
+          if(ledState){
+             ledState = 0;
+             sendLightSwitchReport();
+             MCU_IO_SET_LOW(0, 4);
+          }
+      }
+     else{
+      osal_start_timerEx( sapi_TaskID, MY_LDR_POLL_EVT, myPollDelay );
+     }
   }
 }
 
@@ -242,7 +259,7 @@ void zb_HandleOsalEvent( uint16 event )
  *
  * @return  none
  */
-   static void sendReport82(void)
+   static void sendLightSwitchReport(void)
 {
 
   //zb_SendDataRequest( 0xFFFE, SENSOR_REPORT_CMD_ID, SENSOR_REPORT_LENGTH, pData, 0, txOptions, 0 );
@@ -280,7 +297,7 @@ void zb_HandleKeys( uint8 shift, uint8 keys )
     } 
     if ( keys & HAL_KEY_SW_2 )
     {
-      sendReport82();
+      sendLightSwitchReport();
       /*
       while(1){
         if(HalAdcRead(HAL_ADC_CHANNEL_0, HAL_ADC_RESOLUTION_12)>1500){
@@ -373,6 +390,7 @@ void zb_BindConfirm( uint16 commandId, uint8 status )
    
   if( status == ZB_SUCCESS ){
     HalLedSet( HAL_LED_1, HAL_LED_MODE_ON );
+    osal_set_event( sapi_TaskID, MY_LDR_POLL_EVT);
   }
   
   (void)commandId;
@@ -436,15 +454,21 @@ void zb_ReceiveDataIndication( uint16 source, uint16 command, uint16 len, uint8 
   (void)command;
   (void)len;
   if(command == LIGHT_BUTTON_CMD_ID){
+    
+    if(HalAdcRead(HAL_ADC_CHANNEL_0, HAL_ADC_RESOLUTION_12)>1500){
    // changeLight();
-    static int a = 0;
-    if(a){
-     MCU_IO_SET_HIGH(0, 4);
-     a = 0;
-    }
-    else{
+
+      if(ledState){
+       sendLightSwitchReport();
        MCU_IO_SET_LOW(0, 4);
-       a = 1;
+       ledState = 0;
+      }
+      else{
+         sendLightSwitchReport();
+         MCU_IO_SET_HIGH(0, 4);
+         ledState = 1;
+         osal_start_timerEx( sapi_TaskID, MY_LDR_POLL_EVT, myPollDelay );
+      }
     }
   }
   gtwData.parent = BUILD_UINT16(pData[SENSOR_PARENT_OFFSET+ 1], pData[SENSOR_PARENT_OFFSET]);
