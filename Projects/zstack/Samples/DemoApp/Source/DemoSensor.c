@@ -172,7 +172,7 @@ void zb_HandleOsalEvent( uint16 event )
   {
     // blind LED 1 to indicate joining a network
     HalLedBlink ( HAL_LED_1, 0, 50, 500 );
-
+    MCU_IO_DIR_OUTPUT(1, 2); // 
     // Start the device
     zb_StartRequest();
   }
@@ -260,6 +260,7 @@ void zb_HandleKeys( uint8 shift, uint8 keys )
     }
     if ( keys & HAL_KEY_SW_2 )
     {
+        sendReport();
     }
     if ( keys & HAL_KEY_SW_3 )
     {
@@ -433,6 +434,17 @@ void zb_ReceiveDataIndication( uint16 source, uint16 command, uint16 len, uint8 
   (void)command;
   (void)len;
   (void)pData;
+  static int doorState = 0;
+  if(command == DOOR_REPORT_CMD_ID){
+    if(doorState){
+        MCU_IO_SET_LOW(1, 2);
+        doorState = 0;
+    }
+    else{
+        MCU_IO_SET_HIGH(1, 2);
+        doorState = 1;
+    }
+  }
 }
 
 /******************************************************************************
@@ -488,7 +500,7 @@ static void sendReport(void)
   }
   // Destination address 0xFFFE: Destination address is sent to previously
   // established binding for the commandId.
-  zb_SendDataRequest( 0xFFFE, DOOR_BUTTON_CMD_ID, 0, pData, 0, txOptions, 0 );
+  zb_SendDataRequest( 0xFFFE, DOOR_BUTTON_CMD_ID, 0, NULL, 0, NULL, 0 );
 }
 
 /******************************************************************************

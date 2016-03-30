@@ -103,9 +103,9 @@
 // Application osal event identifiers
 #define MY_START_EVT                        0x0001
 #define MY_BIND_EVT                         0x0002
-#define MY_BIND_DOOR_EVT                         0x0003
+#define MY_BIND_DOOR_EVT                    0x0003
 #define MY_LDR_POLL_EVT                     0x0004
-
+#define MY_DOOR_POLL_EVT                    0x0008
 /******************************************************************************
  * TYPEDEFS
  */
@@ -124,7 +124,7 @@ bool SensorBinded = false;
 static uint8 appState =             APP_INIT;
 static uint8 myStartRetryDelay =    10;          // milliseconds
 static uint16 myBindDelay = 500;
-static uint16 myPollDelay = 300;
+static uint16 myPollDelay = 600;
 static gtwData_t gtwData;
 static int ledState = 0;
 
@@ -137,7 +137,7 @@ static void sysPingReqRcvd(void);
 static void sysPingRsp(void);
 static void sendGtwReport(gtwData_t *gtwData);
 static void sendLightSwitchReport(void);
-
+static void sendDoorSwitchedReport(void);
 /******************************************************************************
  * GLOBAL VARIABLES
  */
@@ -248,8 +248,25 @@ void zb_HandleOsalEvent( uint16 event )
       osal_start_timerEx( sapi_TaskID, MY_LDR_POLL_EVT, myPollDelay );
      }
   }
+  if(event & MY_DOOR_POLL_EVT){
+    static bool doorClosed = false;
+    if(doorClosed && MCU_IO_GET(0,2)){
+      doorClosed = false;
+      sendDoorSwitchedReport();
+      //stuur bericht dat de deur open is gegaan
+    }
+    else if(!doorClosed && !MCU_IO_GET(0,2)){
+      //stuur bericht dat de deur dicht is gegaan
+      sendDoorSwitchedReport();
+      doorClosed = true;
+      
+    }
+    osal_start_timerEx( sapi_TaskID, MY_DOOR_POLL_EVT, myPollDelay );
+  }
 }
-
+void sendDoorSwitchedReport(){
+  zb_SendDataRequest( 0xFFFE, DOOR_REPORT_CMD_ID, 0, NULL, 0, NULL, 0 );
+}
 /******************************************************************************
  * @fn      zb_HandleKeys
  *
@@ -395,6 +412,7 @@ void zb_BindConfirm( uint16 commandId, uint8 status )
   
   if( status == ZB_SUCCESS ){
     if(commandId == DOOR_REPORT_CMD_ID){
+      osal_start_timerEx( sapi_TaskID, MY_DOOR_POLL_EVT, myPollDelay );
       SensorBinded = true;
       HalLedSet( HAL_LED_2, HAL_LED_MODE_ON );
     } 
@@ -481,6 +499,15 @@ void zb_ReceiveDataIndication( uint16 source, uint16 command, uint16 len, uint8 
          ledState = 1;
          osal_start_timerEx( sapi_TaskID, MY_LDR_POLL_EVT, myPollDelay );
       }
+    }
+  }
+  if(command == DOOR_BUTTON_CMD_ID){
+    if(MCU_IO_GET(0,2)){
+      //open door
+      MCU_IO_SET_LOW(0,7);
+    }
+    else{
+      MCU_IO_SET_HIGH(0,7);
     }
   }
   gtwData.parent = BUILD_UINT16(pData[SENSOR_PARENT_OFFSET+ 1], pData[SENSOR_PARENT_OFFSET]);
