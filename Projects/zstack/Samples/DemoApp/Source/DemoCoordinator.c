@@ -206,12 +206,11 @@ void zb_HandleOsalEvent( uint16 event )
 
   if( event & ZB_ENTRY_EVENT )
   {
-    // Initialise UART
+    // Initialise UART and pins
     initUart(uartRxCB);
     MCU_IO_DIR_OUTPUT(0, 4); // LED
     MCU_IO_DIR_OUTPUT(0, 7); // 
     MCU_IO_DIR_INPUT(0, 2);
-    
     MCU_IO_SET_LOW(0, 4);
     
     // blind LED 1 to indicate starting/joining a network
@@ -320,25 +319,6 @@ void zb_HandleKeys( uint8 shift, uint8 keys )
     if ( keys & HAL_KEY_SW_2 )
     {
       sendLightSwitchReport();
-      /*
-      while(1){
-        if(HalAdcRead(HAL_ADC_CHANNEL_0, HAL_ADC_RESOLUTION_12)>1500){
-       // MCU_IO_SET_LOW(0, 4);
-          MCU_IO_SET_LOW(0, 7);
-        }
-        else{
-       //   MCU_IO_SET_HIGH(0, 4);
-          MCU_IO_SET_HIGH(0, 7);
-        }
-        if(MCU_IO_GET(0, 2)){
-           MCU_IO_SET_HIGH(0, 4);
-        
-        }
-        else{
-          MCU_IO_SET_LOW(0, 4);
-        }
-      }
-      */
     }
     if ( keys & HAL_KEY_SW_3 )
     {
@@ -483,16 +463,17 @@ void zb_ReceiveDataIndication( uint16 source, uint16 command, uint16 len, uint8 
 {
   (void)command;
   (void)len;
+    // If command LIGHT_BUTTON_CMD_ID is recieved
   if(command == LIGHT_BUTTON_CMD_ID){
-    
+    //Check if the LDR reads low light (dark)
     if(HalAdcRead(HAL_ADC_CHANNEL_0, HAL_ADC_RESOLUTION_12)>1500){
-   // changeLight();
-
+      // If ledstate is true, send lightswitch report, turn led off and switch ledState
       if(ledState){
        sendLightSwitchReport();
        MCU_IO_SET_LOW(0, 4);
        ledState = 0;
       }
+       // If ledstate is false, turn led on and switch ledState
       else{
          sendLightSwitchReport();
          MCU_IO_SET_HIGH(0, 4);
@@ -501,7 +482,9 @@ void zb_ReceiveDataIndication( uint16 source, uint16 command, uint16 len, uint8 
       }
     }
   }
+  // If command DOOR_BUTTON_CMD_ID is recieved
   if(command == DOOR_BUTTON_CMD_ID){
+    // Check if doorlock is on or off, and open or close the door
     if(MCU_IO_GET(0,2)){
       //open door
       MCU_IO_SET_LOW(0,7);

@@ -97,7 +97,6 @@ static uint8  counter =           0;
 static uint8 reportFailureNr =    0;
 static uint8 bindRetries =        0;
 
-static uint16 myReportPeriod =    5000;         // milliseconds
 static uint16 myBindRetryDelay =  2000;         // milliseconds
 static uint8 myStartRetryDelay =  10;           // milliseconds
 
@@ -150,9 +149,7 @@ const SimpleDescriptionFormat_t zb_SimpleDesc =
  */
 
 void uartRxCB( uint8 port, uint8 event );
-static void sendReport(void);
-static int8 readTemp(void);
-static uint8 readVoltage(void);
+static void sendLightButtonReport(void);
 
 /*****************************************************************************
  * @fn          zb_HandleOsalEvent
@@ -174,6 +171,8 @@ void zb_HandleOsalEvent( uint16 event )
   {
     // blind LED 1 to indicate joining a network
     HalLedBlink ( HAL_LED_1, 0, 50, 500 );
+    
+    // Initialize pins
     MCU_IO_DIR_OUTPUT(1, 2); // 
     MCU_IO_SET_LOW(1, 2);
     
@@ -184,23 +183,6 @@ void zb_HandleOsalEvent( uint16 event )
   if ( event & MY_START_EVT )
   {
     zb_StartRequest();
-  }
-
-  if ( event & MY_REPORT_EVT )
-  {
-    if ( appState == APP_REPORT )
-    {
-      static int8 oldValue;
-      int8 newValue = readTemp();
-      if(oldValue != newValue || counter == 11){
-        //sendReport();
-        counter = 0;
-      }
-      oldValue = newValue;
-      counter++;
-      osal_start_timerEx( sapi_TaskID, MY_REPORT_EVT, myReportPeriod );
-      
-    }
   }
 
   if ( event & MY_FIND_COLLECTOR_EVT )
@@ -250,17 +232,12 @@ void zb_HandleKeys( uint8 shift, uint8 keys )
   {
     if ( keys & HAL_KEY_SW_1 )
     {
-  
-      // Start reporting
-      if ( reportState == FALSE ) {
-        osal_set_event( sapi_TaskID, MY_REPORT_EVT );
-        reportState = TRUE;
-        HalLedSet( HAL_LED_2, HAL_LED_MODE_ON );
-      }
+      
     }
     if ( keys & HAL_KEY_SW_2 )
     {
-      sendReport();
+      //Send ligt button report when pressed on button 2
+      sendLightButtonReport();
     }
     if ( keys & HAL_KEY_SW_3 )
     {
@@ -370,9 +347,9 @@ void zb_BindConfirm( uint16 commandId, uint8 status )
     HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF );
     HalLedSet( HAL_LED_3, HAL_LED_MODE_OFF );
     HalLedSet( HAL_LED_1, HAL_LED_MODE_OFF );
-
-    zb_AllowBind( 0xFF );
     
+    // Zet na de BindConfirm hem weer in AllowBind
+    zb_AllowBind( 0xFF );
     
     // After failure reporting start automatically when the device
     // is binded to a new gateway
@@ -446,6 +423,7 @@ void zb_FindDeviceConfirm( uint8 searchType, uint8 *searchKey, uint8 *result )
 void zb_ReceiveDataIndication( uint16 source, uint16 command, uint16 len, uint8 *pData  )
 {
   static int ledState = 0;
+  // If recieved LIGHT_REPORT_CMD_ID switch the led state and turn it on or off
   if(command == LIGHT_REPORT_CMD_ID){
     if(ledState){
         MCU_IO_SET_LOW(1, 2);
@@ -462,6 +440,10 @@ void zb_ReceiveDataIndication( uint16 source, uint16 command, uint16 len, uint8 
   (void)pData;
 }
 
+static void sendLightButtonReport(void)
+{
+  zb_SendDataRequest( 0xFFFE, LIGHT_BUTTON_CMD_ID, NULL, NULL, 0, 0, 0 );
+}
 /******************************************************************************
  * @fn          uartRxCB
  *
@@ -476,136 +458,4 @@ void uartRxCB( uint8 port, uint8 event )
 {
   (void)port;
   (void)event;
-}
-
-/******************************************************************************
- * @fn          sendReport
- *
- * @brief       Send sensor report
- *
- * @param       none
- *
- * @return      none
- */
-static void sendReport(void)
-{
-  uint8 pData[SENSOR_REPORT_LENGTH];
-  static uint8 reportNr = 0;
-  uint8 txOptions;
-  // Read and report temperature value
-  pData[SENSOR_TEMP_OFFSET] = readTemp();
-
-  // Read and report voltage value
-  pData[SENSOR_VOLTAGE_OFFSET] = readVoltage();
-
-  pData[SENSOR_PARENT_OFFSET] =  HI_UINT16(parentShortAddr);
-  pData[SENSOR_PARENT_OFFSET + 1] =  LO_UINT16(parentShortAddr);
-
-  // Set ACK request on each ACK_INTERVAL report
-  // If a report failed, set ACK request on next report
-  if ( ++reportNr < ACK_REQ_INTERVAL && reportFailureNr == 0 )
-  {
-    txOptions = AF_TX_OPTIONS_NONE;
-  }
-  else
-  {
-    txOptions = AF_MSG_ACK_REQUEST;
-    reportNr = 0;
-  }
-  // Destination address 0xFFFE: Destination address is sent to previously
-  // established binding for the commandId.
-  
-  //zb_SendDataRequest( 0xFFFE, SENSOR_REPORT_CMD_ID, SENSOR_REPORT_LENGTH, pData, 0, txOptions, 0 );
-  zb_SendDataRequest( 0xFFFE, LIGHT_BUTTON_CMD_ID, SENSOR_REPORT_LENGTH, pData, 0, txOptions, 0 );
-}
-
-/******************************************************************************
- * @fn          readTemp
- *
- * @brief       read temperature from ADC
- *
- * @param       none
- *
- * @return      temperature
- */
-static int8 readTemp(void)
-{
-  static uint16 voltageAtTemp22;
-  static uint8 bCalibrate = TRUE; // Calibrate the first time the temp sensor is read
-  uint16 value;
-  int8 temp;
-
-  #if defined (HAL_MCU_CC2530)
-  /*
-   * Use the ADC to read the temperature
-   */
-  value = HalReadTemp();
-
-  // Use the 12 MSB of adcValue
-  value >>= 4;
-
-  /*
-   * These parameters are typical values and need to be calibrated
-   * See the datasheet for the appropriate chip for more details
-   * also, the math below may not be very accurate
-   */
-  /* Assume ADC = 1480 at 25C and ADC = 4/C */
-  #define VOLTAGE_AT_TEMP_25        1480
-  #define TEMP_COEFFICIENT          4
-
-  // Calibrate for 22C the first time the temp sensor is read.
-  // This will assume that the demo is started up in temperature of 22C
-  if ( bCalibrate ) {
-    voltageAtTemp22 = value;
-    bCalibrate = FALSE;
-  }
-
-  temp = 22 + ( (value - voltageAtTemp22) / TEMP_COEFFICIENT );
-
-  // Set 0C as minimum temperature, and 100C as max
-  if ( temp >= 100 )
-  {
-    return 100;
-  }
-  else if ( temp <= 0 ) {
-    return 0;
-  }
-  else {
-    return temp;
-  }
-  // Only CC2530 is supported
-  #else
-  return 0;
-  #endif
-}
-
-/******************************************************************************
- * @fn          readVoltage
- *
- * @brief       read voltage from ADC
- *
- * @param       none
- *
- * @return      voltage
- */
-static uint8 readVoltage(void)
-{
-  #if defined (HAL_MCU_CC2530)
-  /*
-   * Use the ADC to read the bus voltage
-   */
-  uint16 value = HalReadTemp();
-
-  // value now contains measurement of Vdd/3
-  // 0 indicates 0V and 32767 indicates 1.25V
-  // voltage = (value*3*1.25)/32767 volts
-  // we will multiply by this by 10 to allow units of 0.1 volts
-  value = value >> 6;   // divide first by 2^6
-  value = (uint16)(value * 37.5);
-  value = value >> 9;   // ...and later by 2^9...to prevent overflow during multiplication
-
-  return value;
-  #else
-  return 0;
-  #endif // CC2530
 }
